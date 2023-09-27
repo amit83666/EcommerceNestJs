@@ -19,7 +19,8 @@ export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
   @Post()
-  @Roles(Role.Admin)
+  // @Roles(Role.Admin)
+  @Public()
   create(@Body() createProductDto: CreateProductDto) {
     return this.productService.create(createProductDto);
   }

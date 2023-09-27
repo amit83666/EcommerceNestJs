@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Category } from "src/category/entities/category.entity";
+import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 export class Product {
@@ -19,6 +20,10 @@ export class Product {
 
     @Column('text', { nullable: true })
     imageUrls: string;
+
+    @ManyToMany(() => Category, (category) => category.products)
+    @JoinTable()
+    categories: Category[];
 
     @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP(6)' })
     createdAt: Date;
