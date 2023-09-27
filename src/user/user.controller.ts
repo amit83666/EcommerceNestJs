@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { Public } from 'src/auth/public-auth.guard';
 
 @Controller('user')
 export class UserController {
@@ -9,16 +10,10 @@ export class UserController {
 
   // User registration and authentication.
   @Post()
+  @Public()
   create(@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
   }
-  // Login
-  @Post()
-  findUser() {
-    // return this.userService.findOne();
-  }
-
-
 
   // User profile management.
   @Patch(':id')
