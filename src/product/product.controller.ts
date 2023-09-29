@@ -46,4 +46,14 @@ export class ProductController {
   remove(@Param('id') id: string) {
     return this.productService.remove(+id);
   }
+
+  @Post(':id/categories')
+  @Public()
+  async associateProductWithCategories(
+    @Param('id') id: number,
+    @Body() categoryIds: number[],
+  ) {
+    await this.productService.associateProductWithCategories(id, categoryIds);
+    return 'Product associated with categories successfully.';
+  }
 }

@@ -21,7 +21,7 @@ export class Product {
     @Column('text', { nullable: true })
     imageUrls: string;
 
-    @ManyToMany(() => Category, (category) => category.products)
+    @ManyToMany(() => Category)
     @JoinTable()
     categories: Category[];
 
@@ -32,7 +32,3 @@ export class Product {
     updatedAt: Date;
 
 }
-// Flow:
-
-// Create, Read, Update, Delete (CRUD) operations for products.
-// Implement product categorization if needed (e.g., associate products with categories).

@@ -12,6 +12,6 @@ export class Category {
     @Column()
     cdescription: string;
     
-    @ManyToMany(() => Product, (product) => product.categories)
+    @ManyToMany(() => Product, (product) => product.categories,)
     products: Product[];
 }
