@@ -1,0 +1,53 @@
+{
+  "product": [
+    {
+      "id": 1,
+      "name": "Smartphone",
+      "description": "Smartphone",
+      "price": "55000.00",
+      "quantity": 55,
+      "imageUrls": "https://images.pexels.com/photos/1786433/pexels-photo-1786433.jpeg"
+    },
+    {
+      "id": 2,
+      "name": "Laptop",
+      "description": "Powerful laptop for work and gaming",
+      "price": "75000.00",
+      "quantity": 75,
+      "imageUrls": "https://images.pexels.com/photos/11451730/pexels-photo-11451730.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+    },
+    {
+      "id": 3,
+      "name": "T-shirt",
+      "description": "Comfortable cotton T-shirt",
+      "price": "500.00",
+      "quantity": 50,
+      "imageUrls": "https://images.pexels.com/photos/1656684/pexels-photo-1656684.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "id": 4,
+      "name": "Science Fiction Book",
+      "description": "Best-selling science fiction novel",
+      "price": "500.00",
+      "quantity": 50,
+      "imageUrls": "https://images.pexels.com/photos/4627898/pexels-photo-4627898.jpeg?auto=compress&cs=tinysrgb&w=600"
+    }
+  ],
+  "categories": [
+    {
+      "cid": 1,
+      "cname": "Electronics",
+      "cdescription": "Electronic devices and accessories"
+    },
+    {
+      "cid": 2,
+      "cname": "Clothing",
+      "cdescription": "Fashion and apparel"
+    },
+    {
+      "cid": 3,
+      "cname": "Books",
+      "cdescription": "Books of various genres"
+    }
+  ]
+}

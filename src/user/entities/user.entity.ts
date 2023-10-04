@@ -1,9 +1,10 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Order } from "src/order/entities/order.entity";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 export class User {
     @PrimaryGeneratedColumn()
-    id: number; 
+    userId: number; 
 
     @Column()
     email:string;
@@ -19,6 +20,9 @@ export class User {
 
     @Column()
     roles:string;
+
+    @OneToMany(()=> Order, order => order.user)
+    orders:Order[];
 
     @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP(6)' })
     createdAt: Date;
