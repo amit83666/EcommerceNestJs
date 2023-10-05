@@ -14,14 +14,33 @@ import { UserService } from './user/user.service';
 import { userProviders } from './user/user.provider';
 import { DatabaseModule } from './database/database.module';
 import { AuthModule } from './auth/auth.module';
+import { PasswordresetModule } from './passwordreset/passwordreset.module';
+import { ConfigModule } from '@nestjs/config';
+import { CustumConfigModule } from './config/config.module';
+import { SharedModule } from './shared/token.module';
 
 @Module({
-  imports: [DatabaseModule,ProductModule, UserModule, CategoryModule, OrderModule, CartModule, PaymentModule, ReviewModule, SearchFilterModule, AdminModule, AuthModule],
-  controllers: [AppController],
-  providers: [
-    AppService,
-    UserService,
-    ...userProviders
+  imports: [
+    DatabaseModule,
+    ProductModule,
+    UserModule,
+    CategoryModule,
+    OrderModule,
+    CartModule,
+    PaymentModule,
+    ReviewModule,
+    SearchFilterModule,
+    AdminModule,
+    AuthModule,
+    PasswordresetModule,
+    CustumConfigModule,
+    SharedModule,
+    // ConfigModule.forRoot({
+    //   isGlobal: true,
+    //   envFilePath:".local.env"
+    // }),
   ],
+  controllers: [AppController],
+  providers: [AppService, UserService, ...userProviders],
 })
 export class AppModule {}

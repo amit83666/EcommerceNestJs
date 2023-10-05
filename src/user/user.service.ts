@@ -6,6 +6,7 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class UserService {
+ 
   constructor(
     @Inject('USER_REPOSITORY') 
     private userRepository: Repository<User>,
@@ -14,7 +15,10 @@ export class UserService {
     const newUser = this.userRepository.create(createUserDto);
     return this.userRepository.save(newUser);
   }
-
+  findById(id: any) {
+    return this.userRepository.findOne({where:{userId:id}});
+    // throw new Error('Method not implemented.');
+  }
   findAll() {
     return `This action returns all user`;
   }
@@ -23,8 +27,11 @@ export class UserService {
     return this.userRepository.findOne({where:{email}});
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  update(userId: number, updateUserDto: UpdateUserDto) {
+    return `This action updates a #${userId} user`;
+  }
+  updatePass(updateUserDto: UpdateUserDto){
+    return this.userRepository.save(updateUserDto);
   }
 
   remove(id: number) {
