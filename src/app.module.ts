@@ -18,6 +18,7 @@ import { PasswordresetModule } from './passwordreset/passwordreset.module';
 import { ConfigModule } from '@nestjs/config';
 import { CustumConfigModule } from './config/config.module';
 import { SharedModule } from './shared/token.module';
+import { EmailModule } from './email/email.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { SharedModule } from './shared/token.module';
     PasswordresetModule,
     CustumConfigModule,
     SharedModule,
+    EmailModule,
     // ConfigModule.forRoot({
     //   isGlobal: true,
     //   envFilePath:".local.env"

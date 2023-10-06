@@ -10,18 +10,21 @@ import { TokenService } from 'src/shared/token.service';
 import { CustumConfigModule } from 'src/config/config.module';
 import { CustumConfigService } from 'src/config/config.service';
 import { ConfigService } from '@nestjs/config';
-
+import { EmailModule } from 'src/email/email.module';
+import { EmailService } from 'src/email/email.service';
 
 @Module({
-  imports:[DatabaseModule,UserModule,CustumConfigModule],
+  imports: [DatabaseModule, UserModule, CustumConfigModule, EmailModule],
   controllers: [PasswordresetController],
-  providers: [PasswordresetService,
+  providers: [
+    PasswordresetService,
     UserService,
     TokenService,
     CustumConfigService,
     ConfigService,
-  ...passwordResetProviders,
-  ...userProviders,
-],
+    EmailService,
+    ...passwordResetProviders,
+    ...userProviders,
+  ],
 })
 export class PasswordresetModule {}
