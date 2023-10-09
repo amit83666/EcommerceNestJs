@@ -20,6 +20,7 @@ export class Order {
     orderStatus:string;//(e.g., 'Pending', 'Shipped', 'Delivered', 'Cancelled')
 
     @ManyToOne(()=> User, user => user.orders)
+    @JoinColumn({ name: 'UserId' })
     user:User;
 
     @ManyToMany(()=>Product, product=> product.orders)
