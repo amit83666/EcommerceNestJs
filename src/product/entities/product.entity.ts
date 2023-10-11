@@ -1,6 +1,7 @@
+import { CartItem } from "src/cart/entities/cart-item.entity";
 import { Category } from "src/category/entities/category.entity";
 import { Order } from "src/order/entities/order.entity";
-import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 export class Product {
@@ -29,6 +30,9 @@ export class Product {
     @ManyToMany(() => Order,(order) => order.products)
     @JoinTable()
     orders: Order[];
+
+    @OneToMany(()=>CartItem,(cartItems)=> cartItems.product)
+    cartItems:CartItem[]
 
     @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP(6)' })
     createdAt: Date;

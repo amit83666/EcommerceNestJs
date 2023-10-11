@@ -1,3 +1,4 @@
+import { Cart } from "src/cart/entities/cart.entity";
 import { Order } from "src/order/entities/order.entity";
 import { PasswordReset } from "src/passwordreset/entities/passwordreset.entity";
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
@@ -27,6 +28,9 @@ export class User {
 
     @OneToMany(() => PasswordReset, (passwordReset) => passwordReset.user)
     passwordResets: PasswordReset[];
+
+    @OneToMany(()=> Cart, (cart)=> cart.user)
+    carts:Cart[];
 
     @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP(6)' })
     createdAt: Date;
