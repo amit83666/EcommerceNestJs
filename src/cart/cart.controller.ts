@@ -28,6 +28,12 @@ export class CartController {
   ){
     return this.cartService.addItemToCart(userId, addItemDto);
   }
+  @Delete(':cartId/remove-item/:cartItemId')
+  @Public()
+  async removeItemFromCart(@Param('cartId') cartId: number, @Param('cartItemId') cartItemId: number): Promise<void> {
+    return this.cartService.removeItemFromCart(cartId, cartItemId);
+  }
+
 
 
   // @Get(':id')

@@ -53,6 +53,20 @@ export class CartService {
       })
     return this.cartItemRepository.save(newCartItem);
   }}
+  async removeItemFromCart(cartId:number, cartItemId:number):Promise<void>{
+    const cart  = await this.cartRepository.findOne({where:{id:cartId},relations: ['cartItems'] });
+    if (!cart) {
+      throw new NotFoundException(`Cart with ID ${cartId} not found.`);
+    }
+    console.log("in remove cart ", cart);
+     const cartItem = cart.cartItems.find((item) => item.id === +cartItemId);
+     if (!cartItem) {
+      throw new NotFoundException(`Cart item with ID ${cartItemId} not found in the cart.`);
+    }
+    console.log("cartItem", cartItem);
+    await this.cartItemRepository.remove(cartItem);
+  }
+  
  
   findAll() {
     return `This action returns all cart`;
